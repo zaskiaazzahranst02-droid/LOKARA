@@ -256,7 +256,8 @@
         <p>Make your travel plan and estimate your tour cost.</p>
     </div>
 
-    <form action="/calculate" method="POST">
+   
+<form id="tripForm">
 
         <label for="date">Travel Date</label>
         <input type="date" id="date" name="date" required>
@@ -274,7 +275,9 @@
         <label for="guests">Number of Guests</label>
         <input type="number" id="guests" name="guests" min="1" max="20" placeholder="Enter number of guests" required>
 
-        <button type="submit" class="btn">Calculate My Trip</button>
+        
+<button type="button" class="btn" onclick="calculateTrip()">Calculate My Trip</button>
+
     </form>
 
     <div class="result">
