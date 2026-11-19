@@ -312,6 +312,29 @@
     <p>Created by ZASKIA AZ ZAHRA NASUTION</p>
     <p>&copy; 2026 LOKARA. All Rights Reserved.</p>
 </footer>
+<script>
+function calculateTrip() {
+    const date = document.getElementById("date").value;
+    const hours = Number(document.getElementById("hours").value);
+    const guests = Number(document.getElementById("guests").value);
 
+    if (!date || !hours || !guests || guests < 1) {
+        alert("Please complete all fields!");
+        return;
+    }
+
+    const total = hours * guests * 50000;
+    const result = document.querySelector(".result");
+
+    result.style.display = "block";
+    result.innerHTML = `
+        <h3>Your Estimated Tour Cost</h3>
+        <p>Travel Date: ${date}</p>
+        <p>Duration: ${hours} Hours</p>
+        <p>Number of Guests: ${guests}</p>
+        <h3>Estimated Cost: Rp ${total.toLocaleString("id-ID")}</h3>
+    `;
+}
+</script>
 </body>
 </html>
