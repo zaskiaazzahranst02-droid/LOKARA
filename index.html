@@ -1,4 +1,4 @@
- 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -224,26 +224,26 @@
 
     <div class="package-container">
 
-     <div class="package-card">
-         <span>01 / CULTURE</span>
-         <h3>Heritage Journey</h3>
-         <p>Explore historical landmarks, royal heritage, and traditional Javanese culture.</p>
-         <a href="#planner" class="btn">Plan This Trip</a>
-      </div>
+        <div class="package-card">
+            <span>01 / CULTURE</span>
+            <h3>Heritage Journey</h3>
+            <p>Explore historical landmarks, royal heritage, and traditional Javanese culture.</p>
+            <a href="#planner" class="btn">Plan This Trip</a>
+        </div>
 
-      <div class="package-card">
-          <span>02 / NATURE</span>
-          <h3>Nature Escape</h3>
-          <p>Enjoy beautiful beaches, green landscapes, and peaceful natural destinations.</p>
-          <a href="#planner" class="btn">Plan This Trip</a>
-       </div>
+        <div class="package-card">
+            <span>02 / NATURE</span>
+            <h3>Nature Escape</h3>
+            <p>Enjoy beautiful beaches, green landscapes, and peaceful natural destinations.</p>
+            <a href="#planner" class="btn">Plan This Trip</a>
+        </div>
 
-      <div class="package-card">
-          <span>03 / ADVENTURE</span>
-          <h3>Adventure Explorer</h3>
-          <p>Discover exciting outdoor activities and explore the natural beauty of Yogyakarta.</p>
-          <a href="#planner" class="btn">Plan This Trip</a>
-       </div>
+        <div class="package-card">
+            <span>03 / ADVENTURE</span>
+            <h3>Adventure Explorer</h3>
+            <p>Discover exciting outdoor activities and explore the natural beauty of Yogyakarta.</p>
+            <a href="#planner" class="btn">Plan This Trip</a>
+        </div>
 
     </div>
 </section>
@@ -256,8 +256,7 @@
         <p>Make your travel plan and estimate your tour cost.</p>
     </div>
 
-   
-<form id="tripForm">
+    <form id="tripForm" onsubmit="return false;">
 
         <label for="date">Travel Date</label>
         <input type="date" id="date" name="date" required>
@@ -265,7 +264,7 @@
         <label for="hours">Tour Duration (Hours)</label>
         <select id="hours" name="hours" required>
             <option value="">Choose duration</option>
-            <option value="1">1 Hours</option>
+            <option value="1">1 Hour</option>
             <option value="2">2 Hours</option>
             <option value="3">3 Hours</option>
             <option value="4">4 Hours</option>
@@ -276,22 +275,18 @@
         <label for="guests">Number of Guests</label>
         <input type="number" id="guests" name="guests" min="1" max="20" placeholder="Enter number of guests" required>
 
-        
-<button type="button" class="btn" onclick="calculateTrip()">Calculate My Trip</button>
+        <button type="button" class="btn" onclick="calculateTrip()">Calculate My Trip</button>
 
     </form>
 
-    <div class="result">
-    <h3>Your Estimated Tour Cost</h3>
-
-    <p>Travel Date: -</p>
-    <p>Duration: - Hours</p>
-    <p>Number of Guests: -</p>
-
-    <h2>Rp 0</h2>
-
-    <p>Thank you for planning your journey with LOKARA!</p>
-</div>
+    <div class="result" style="display: none;">
+        <h3>Your Estimated Tour Cost</h3>
+        <p>Travel Date: -</p>
+        <p>Duration: - Hours</p>
+        <p>Number of Guests: -</p>
+        <h2>Rp 0</h2>
+        <p>Thank you for planning your journey with LOKARA!</p>
+    </div>
 </section>
 
 <!-- CONTACT -->
@@ -316,32 +311,36 @@
     <p>Created by ZASKIA AZ ZAHRA NASUTION</p>
     <p>&copy; 2026 LOKARA. All Rights Reserved.</p>
 </footer>
+
+<!-- TRIP CALCULATOR -->
 <script>
-function calculateTrip() {
-  <script>
 function calculateTrip() {
     const date = document.getElementById("date").value;
     const hours = Number(document.getElementById("hours").value);
     const guests = Number(document.getElementById("guests").value);
 
-    if (!date || !hours || !guests || guests < 1) {
+    if (!date || !hours || !guests || guests < 1 || guests > 20) {
         alert("Please complete all fields!");
         return;
     }
 
-    const total = hours * guests * 50000;
+    const pricePerHour = 50000;
+    const total = hours * guests * pricePerHour;
+
     const result = document.querySelector(".result");
 
     result.style.display = "block";
+
     result.innerHTML = `
         <h3>Your Estimated Tour Cost</h3>
         <p>Travel Date: ${date}</p>
         <p>Duration: ${hours} Hours</p>
         <p>Number of Guests: ${guests}</p>
-        <h3>Estimated Cost: Rp ${total.toLocaleString("id-ID")}</h3>
+        <h2>Estimated Cost: Rp ${total.toLocaleString("id-ID")}</h2>
+        <p>Thank you for planning your journey with LOKARA!</p>
     `;
 }
-</script> 
 </script>
+
 </body>
 </html>
